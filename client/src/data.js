@@ -18,7 +18,7 @@ const data = {
         {
             id:2,
             name: 'Adidas Fit shits',
-            slug: 'Adidas-fit-shits',
+            slug: 'adidas-fit-shits',
             category: 'Shirts',
             image: '/images/p2.jpg',
             price : 1600,
