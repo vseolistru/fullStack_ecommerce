@@ -7,22 +7,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-header {
-  background-color: #404040;
-  padding: 1rem;
+.site-container {
+  min-height: 100vh;
 }
-header a {
-  color: #ffff;
-  font-weight: bold;
-  text-decoration: none;
-}
-h1 {
-  padding: 1rem;
+main {
+  flex: 1;
 }
 .products {
   display: flex;
   padding: 1rem;
   flex-wrap: wrap;
+}
+
+.ratting span {
+  color: #bd4301;
 }
 
 .product {

@@ -20,6 +20,10 @@
 в панеле XHR dev-tools браузера, можем убедится что наш бекэенд не светится, и также увидим response с сервера через прокси.
  
 устнаовим **axios** `npm i axios`
+также для диспетчера useReducer утановим logger для отслеживания изменения состояния `npm i use-reducer-logger --force`
+
+
+установим бутстрап `npm i react-bootstrap bootstrap react-router-bootstrap`
 
 
 

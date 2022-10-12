@@ -10,7 +10,7 @@ const data = {
             price : 1800,
             countInStock: 10,
             brand: 'Nike',
-            ratting: 4.5,
+            ratting: 6.5,
             numReviews: 5,
             description: 'High quality nike shirts'
         },
@@ -23,7 +23,7 @@ const data = {
             price : 1600,
             countInStock: 12,
             brand: 'Adidas',
-            ratting: 4.1,
+            ratting: 5.6,
             numReviews: 8,
             description: 'High quality adidas shirts'
         },
