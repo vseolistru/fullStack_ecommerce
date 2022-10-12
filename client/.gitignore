@@ -3,6 +3,8 @@
 # dependencies
 /node_modules
 /public/images
+/server/.env
+/server/node_modules
 /.pnp
 .pnp.js
 
@@ -18,6 +20,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.idea/
 
 npm-debug.log*
 yarn-debug.log*
