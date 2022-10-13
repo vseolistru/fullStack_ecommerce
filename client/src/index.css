@@ -35,3 +35,8 @@ main {
 .product-item {
   padding: 0.5rem;
 }
+
+.img-large {
+  max-width: 100%;
+  max-height: 100%;
+}

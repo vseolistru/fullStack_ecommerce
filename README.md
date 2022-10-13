@@ -26,6 +26,9 @@
 установим бутстрап `npm i react-bootstrap bootstrap react-router-bootstrap`
 
 
+Для заголовка **(title)** используем `npm i react-helmet-async` для его использования создадим провайдер **HelmetProvider** в index.js
+
+
 
 ## Server: 
 
