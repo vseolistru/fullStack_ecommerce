@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useReducer} from 'react';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import {Badge, Button, Card, Col, ListGroup, Row} from "react-bootstrap";
 import Ratting from "../components/Ratting";
@@ -23,6 +23,8 @@ const reducer = (state, action) => {
 };
 
 const ProductScreen = () => {
+
+    const navigate = useNavigate()
     const params = useParams();
     const {slug} = params;
     const [{loading, error, product}, dispatch] = useReducer(reducer, {
@@ -55,7 +57,9 @@ const ProductScreen = () => {
         if (data.countInStock < quantity) {
             window.alert('Sorry, Product iut of stock');
         }
-        ctxDispatch({type:'CART_ADD_ITEM',payload:{...product, quantity}});
+        ctxDispatch({type:'CART_ADD_ITEM',payload:{...product, quantity},
+        });
+        navigate('/cart')
     }
     return (
         loading ? <LoadingBox/>

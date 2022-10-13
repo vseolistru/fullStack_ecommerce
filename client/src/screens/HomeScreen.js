@@ -1,6 +1,5 @@
 import React, {useEffect, useReducer, useState} from 'react';
 import axios from "axios";
-//import logger from "use-reducer-logger";
 import { Row, Col} from "react-bootstrap";
 import Product from "../components/Product";
 import LoadingBox from "../components/LoadingBox";
@@ -28,8 +27,7 @@ const HomeScreen = () => {
         loading: true,
         error:''
     });
-    //console.log(reducer)
-    //const [products, setProducts] = useState([])
+
     useEffect(()=>{
             const fetchData = async () => {
             dispatch({type: 'FETCH_REQUEST'})
@@ -41,8 +39,6 @@ const HomeScreen = () => {
             catch (e) {
                 dispatch({type: 'FETCH_FAIL', payload: e.message})
             }
-
-            //setProducts(res.data)
         };
         fetchData();
     },[])
@@ -56,7 +52,7 @@ const HomeScreen = () => {
                     loading ? (<LoadingBox/>): error ? (<MessageBox variant="danger">{error}</MessageBox>) :
                         (
                     products.map(prod =>
-                        <Col sm={6} md={4} lg={3} className="mb-3" key={prod.id} >
+                        <Col sm={6} md={4} lg={3} className="mb-3" key={prod._id} >
                             <Product prod={prod}></Product>
                         </Col>
                 ))}
