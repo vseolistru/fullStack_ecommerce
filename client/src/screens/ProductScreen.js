@@ -4,6 +4,8 @@ import axios from "axios";
 import {Badge, Button, Card, Col, ListGroup, Row} from "react-bootstrap";
 import Ratting from "../components/Ratting";
 import {Helmet} from "react-helmet-async";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -44,8 +46,8 @@ const ProductScreen = () => {
 
 
     return (
-        loading ? <div>Loading...</div>
-        : error ? <div>{error}</div>
+        loading ? <LoadingBox/>
+        : error ? <MessageBox/>
         :
         <div className="mt-3">
             <Row>
@@ -99,15 +101,12 @@ const ProductScreen = () => {
                                         </div>
                                     </ListGroup.Item>
                                 )}
-
                             </ListGroup>
                         </Card.Body>
                     </Card>
                 </Col>
             </Row>
           </div>
-
-
     );
 };
 

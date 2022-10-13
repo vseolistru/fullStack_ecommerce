@@ -3,6 +3,8 @@ import axios from "axios";
 //import logger from "use-reducer-logger";
 import { Row, Col} from "react-bootstrap";
 import Product from "../components/Product";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
 import {Helmet} from "react-helmet-async";
 
 
@@ -51,7 +53,7 @@ const HomeScreen = () => {
             <div className="products">
                 <Row>
                 {
-                    loading ? (<div>Loading...</div>): error ? (<div>{error}</div>) :
+                    loading ? (<LoadingBox/>): error ? (<MessageBox variant="danger">{error}</MessageBox>) :
                         (
                     products.map(prod =>
                         <Col sm={6} md={4} lg={3} className="mb-3" key={prod.id} >

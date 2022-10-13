@@ -14,9 +14,13 @@ app.use(express.json());
 
 
 app.get('/api/products', (req, res)=>{
-    //res.status(200).json({message:'all fine'})
     res.send(data.products)
 });
+app.get('/api/products/slug/:slug', (req, res)=>{
+    const product = data.products.find(x=> x.slug === req.params.slug);
+    product ? res.send(product) : res.status(404).json({message: "product not found"})
+});
+
 async function startApp () {
     await mongoose.connect(DB_URL)
     app.listen(PORT, () => console.log(`Serv succ at ${PORT}`))
