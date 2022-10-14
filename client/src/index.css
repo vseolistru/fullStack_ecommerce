@@ -42,5 +42,9 @@ main {
 }
 
 .img-thumbnail {
-  height: 80px;
+  height: 120px;
+}
+
+small-container{
+  width: 400px;
 }

@@ -74,7 +74,7 @@ const CartScreen = () => {
                 <Col md={4}>
                     <Card>
                         <Card.Body>
-                            <ListGroup variant="flush">
+                            <ListGroup variant="flush" className="mt-3">
                                 <h3>
                                     Subtotal ({cartItems.reduce((a, c)=> a+c.quantity, 0)} {' '} items)
                                     : {cartItems.reduce((a,c)=> a+ c.price * c.quantity, 0)}p.
@@ -82,7 +82,8 @@ const CartScreen = () => {
                             </ListGroup>
                             <ListGroup>
                                 <div className="d-grid">
-                                    <Button type = 'button' onClick={checkoutHandler}
+                                    <Button  className="mt-3" type = 'button'
+                                            onClick={checkoutHandler}
                                             variant='warning' disabled={cartItems.length === 0}>
                                         Proceed Checkout
                                     </Button>

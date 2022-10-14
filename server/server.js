@@ -2,7 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import data from "./data.js";
+import seedRouter from "./routes/seedRoutes.js";
+import productRouter from "./routes/productRoutes.js";
 
 dotenv.config();
 const DB_URL = process.env.DB_NAME;
@@ -12,19 +13,10 @@ const PORT = process.env.PORT || 8000;
 app.use(cors());
 app.use(express.json());
 
+app.use('/api/seed',seedRouter );
+app.use('/api/products',productRouter);
 
-app.get('/api/products', (req, res)=>{
-    res.send(data.products)
-});
-app.get('/api/products/slug/:slug', (req, res)=>{
-    const product = data.products.find(x=> x.slug === req.params.slug);
-    product ? res.send(product) : res.status(404).json({message: "product not found"})
-});
 
-app.get('/api/products/:id', (req, res)=>{
-    const product = data.products.find(x=> x._id === req.params.id);
-    product ? res.send(product) : res.status(404).json({message: "product not found"})
-});
 
 async function startApp () {
     await mongoose.connect(DB_URL)
