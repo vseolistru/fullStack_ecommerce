@@ -28,6 +28,8 @@
 
 Для заголовка **(title)** используем `npm i react-helmet-async` для его использования создадим провайдер **HelmetProvider** в index.js
 
+Установим тостифай для замены алертов `npm i react-toastify`
+
 
 
 ## Server: 
