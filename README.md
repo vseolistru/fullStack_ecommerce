@@ -32,8 +32,15 @@
 
 ## Server: 
 
-инициализируем server `npm init -y`
+Инициализируем server `npm init -y`
 
-устанавливаем `npm i express mongoose cors dotenv`, `npm i nodemon --save-dev`
+Устанавливаем `npm i express mongoose cors dotenv`, `npm i nodemon --save-dev`
 
-в package.json добавляем `"start": " nodemon index.js"` для автозапуска сервера и `"type": "module",` для импорта, вместо реквайра 
+В package.json добавляем `"start": " nodemon index.js"` для автозапуска сервера и `"type": "module",` для импорта, вместо реквайра.
+
+Для шифрования пароля установим bcrypt `npm i bcryptjs`
+
+Установим для обработки ошибок JWT token `npm i express-async-handler`
+
+Установим JWT `npm i jsonwebtoken`
+

@@ -1,5 +1,21 @@
+import bcrypt from 'bcryptjs'
 //mock
 const data = {
+    users: [
+        {
+            username: 'v_seo',
+            email: 'v_seo@list.ru',
+            password: bcrypt.hashSync('somepass'),
+            isAdmin: true,
+        },
+        {
+            username: 'vknseo',
+            email: 'vknseo@google.com',
+            password: bcrypt.hashSync('somepass'),
+            isAdmin: false,
+        }
+
+    ],
     products: [
         {
             name: 'Nike Slim shits',
@@ -49,6 +65,8 @@ const data = {
             numReviews: 12,
             description: 'High quality adidas pants'
         }
-    ]
+    ],
+
+
 }
 export default data;
