@@ -5,6 +5,8 @@ const userRouter = express.Router();
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken';
 import { generateToken } from "../utils.js";
+import userCtrls from "../controllres/userCtrls.js";
+
 
 
 userRouter.post('/signin',
@@ -25,6 +27,9 @@ userRouter.post('/signin',
         res.status(401).json({ message: 'Invalid email or password' });
     })
 );
+
+userRouter.post ('/signup', userCtrls.registration);
+userRouter.get('/activate/:link', userCtrls.activate);
 
 export default userRouter;
 

@@ -46,3 +46,7 @@
 
 Установим JWT `npm i jsonwebtoken`
 
+Установим uuid `npm i uuid`
+
+Установим nodemailer `npm i nodemailer`
+
