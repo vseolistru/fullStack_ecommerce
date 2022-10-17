@@ -11,6 +11,7 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 import SignUpScreen from "./screens/SignUpScreen";
+import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 
 function App() {
     const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -21,6 +22,7 @@ function App() {
         localStorage.removeItem('userInfo');
         localStorage.removeItem('cartItems');
         localStorage.removeItem('shippingAddress');
+        localStorage.removeItem('paymentMethod');
         window.location.href = '/signin';
     }
 
@@ -67,8 +69,9 @@ function App() {
                    <Route path="/product/:slug" element={<ProductScreen/>}/>
                    <Route path="/cart" element={<CartScreen/>}/>
                    <Route path="/signin" element={<SigninScreen/>}/>
-                    <Route path="/shipping" element={<ShippingAddressScreen/>}/>
-                    <Route path="/signup" element={<SignUpScreen/>}/>
+                   <Route path="/shipping" element={<ShippingAddressScreen/>}/>
+                   <Route path="/signup" element={<SignUpScreen/>}/>
+                   <Route path="/payment" element={<PaymentMethodScreen/>}/>
                    <Route path="/" element={<HomeScreen/>}/>
 
                 </Routes>
