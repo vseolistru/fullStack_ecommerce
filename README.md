@@ -42,7 +42,7 @@
 
 Для шифрования пароля установим bcrypt `npm i bcryptjs`
 
-Установим для обработки ошибок JWT token `npm i express-async-handler`
+Установим async-handle `npm i express-async-handler`
 
 Установим JWT `npm i jsonwebtoken`
 

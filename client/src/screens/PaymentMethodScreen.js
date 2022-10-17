@@ -42,7 +42,7 @@ const PaymentMethodScreen = () => {
                                         checked={paymentMethodName === "Stripe"} onChange={(e)=>{setPaymentMethod(e.target.value)}}/>
                         </div>
                         <div className="mb-3">
-                            <Button type="submit">Continue</Button>
+                            <Button variant="warning" type="submit">Continue</Button>
                         </div>
                     </Form>
                 </Col>

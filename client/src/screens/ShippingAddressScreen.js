@@ -55,7 +55,7 @@ const ShippingAddressScreen = () => {
                         <Form.Control value={postalCode} onChange={(e)=>setPostalCode(e.target.value)} required/>
                     </Form.Group>
                     <div className="mb-3">
-                        <Button variant="primary" type="submit">Continue</Button>
+                        <Button variant="warning" type="submit">Continue</Button>
                     </div>
                 </Form>
                 </Col>
