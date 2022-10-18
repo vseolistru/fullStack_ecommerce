@@ -15,3 +15,15 @@ export const generateToken = (user) => {
         }
     );
 };
+
+export const isAuth = (req, res, next) =>{
+    const token = req.headers.authorization.split(' ')[1]
+    if (token) {
+        const decoded = jwt.verify(token, process.env.SECRET_KEY)
+        req.user = decoded
+        next()
+    }
+    else{
+        res.status(403).json({message:"Token has been invalid, or expired"})
+    }
+}

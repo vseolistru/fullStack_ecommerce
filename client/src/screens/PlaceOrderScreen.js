@@ -1,11 +1,32 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useReducer} from 'react';
 import CheckOutSteps from "../components/CheckOutSteps";
 import {Helmet} from "react-helmet-async";
 import {Button, Card, Col, ListGroup, Row} from "react-bootstrap";
 import {Store} from "../Store";
 import {Link, useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
+import {getError} from "../utils";
+import axios from "axios";
+import LoadingBox from "../components/LoadingBox";
+
+const reducer = (state, action) => {
+    switch (action.type){
+        case 'CREATE_REQUEST':
+            return {...state, loading: true};
+        case 'CREATE_SUCCESS':
+            return {...state, loading: false};
+        case 'CREATE_FAIL':
+            return {...state, loading: false};
+        default:
+            return state
+    }
+}
 
 const PlaceOrderScreen = () => {
+    const [{loading}, dispatch] = useReducer(reducer,{
+        loading: false,
+    });
+
     const {state, dispatch: ctxDispatch} = useContext(Store);
     const {userInfo, cart} = state;
     const navigate = useNavigate()
@@ -17,7 +38,29 @@ const PlaceOrderScreen = () => {
     cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
 
     const placeOrderHandler =async () => {
-
+        try {
+            dispatch({type: 'CREATE_REQUEST'});
+            const {data} = await axios.post('/api/orders', {
+                orderItems: cart.cartItems,
+                shippingAddress: cart.shippingAddress,
+                paymentMethod: cart.paymentMethod,
+                itemsPrice: cart.itemsPrice,
+                shippingPrice: cart.shippingPrice,
+                taxPrice: cart.taxPrice,
+                totalPrice: cart.totalPrice,
+            },
+                {
+                    headers:{authorization: `Bearer ${userInfo.token}`}
+                })
+            ctxDispatch({type: 'CART_CLEAR'})
+            dispatch({type: 'CREATE_SUCCESS'})
+            localStorage.removeItem('cartItems');
+            navigate(`/order/${data.order._id}`)
+        }
+        catch (e){
+         dispatch({type: 'CREATE_FAIL'});
+         toast.error(getError(e))
+        }
     }
 
     useEffect(()=>{
@@ -38,8 +81,10 @@ const PlaceOrderScreen = () => {
                             <Card.Title>Shipping</Card.Title>
                             <Card.Text>
                                 <strong>Name: </strong>{cart.shippingAddress.fullName}<br/>
+                                <strong>Email: </strong> {userInfo.email}<br/>
                                 <strong>Address: </strong>{cart.shippingAddress.address}<br/>
-                                {cart.shippingAddress.city}, {cart.shippingAddress.postalCode}
+                                {cart.shippingAddress.city}, {cart.shippingAddress.postalCode}<br/>
+
                             </Card.Text>
                             <Link to="/shipping">Edit</Link>
                         </Card.Body>
@@ -113,6 +158,7 @@ const PlaceOrderScreen = () => {
                                         Place Order
                                     </Button>
                                 </div>
+                                {loading && <LoadingBox/>}
                             </ListGroup.Item>
                         </Card.Body>
                     </Card>

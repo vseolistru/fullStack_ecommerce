@@ -18,6 +18,11 @@ const initialState = {
         ? JSON.parse(localStorage.getItem('cartItems'))
         : [],
     },
+    order:{
+        order: localStorage.getItem('order')
+            ? JSON.parse(localStorage.getItem('order'))
+            : {},
+    }
 };
 
 function reducer (state, action) {
@@ -36,6 +41,8 @@ function reducer (state, action) {
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
             return {...state, cart: {...state.cart, cartItems}}
         }
+        case 'CART_CLEAR':
+            return {...state, cart: {...state.cart, cartItems: []}}
         case 'USER_LOGIN': {
             return {...state, userInfo: action.payload}
         }
