@@ -18,11 +18,7 @@ const initialState = {
         ? JSON.parse(localStorage.getItem('cartItems'))
         : [],
     },
-    order:{
-        order: localStorage.getItem('order')
-            ? JSON.parse(localStorage.getItem('order'))
-            : {},
-    }
+
 };
 
 function reducer (state, action) {

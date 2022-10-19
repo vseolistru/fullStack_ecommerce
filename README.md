@@ -30,6 +30,16 @@
 
 Установим тостифай для замены алертов `npm i react-toastify`
 
+Сделаем paypal метод оплаты на **https://developer.paypal.com/home** -> dashboard ->SandBox (for testing) -> creteApp -> 
+copy ClientID ( ID ), copy to .env backend
+
+
+Добавляем аккаунт to Paypal Sandbox acc: sb-bztyr21815001@personal.example.com
+pass: 5!cJO9_p
+
+
+Установим paypal-client `npm i react-paypal-js` 
+
 
 
 ## Server: 
