@@ -6,7 +6,6 @@ const productRouter = express.Router();
 productRouter.get('/', async (req, res) => {
     const products = await Product.find()
     res.json(products).status(200)
-
 });
 
 productRouter.get('/slug/:slug',async (req, res)=>{
