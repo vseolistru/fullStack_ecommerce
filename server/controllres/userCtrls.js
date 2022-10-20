@@ -54,6 +54,38 @@ class UserCtrls {
             res.status(500).json('is not saved')
         }
     }
+
+    async update (req, res) {
+        try{
+            const {username, email, password} = req.body
+            const user = await User.findById (req.user._id);
+            if (!user) {
+                return res.status(406).json({message: 'User does not exist'})
+            }
+            if (!emailValidator.test(email)) {
+                return res.status(406).json({message: 'Email должен содержать - @ и домен'})
+            }
+            if (password.length < 8) {
+                return res.status(406).json({message: 'Пароль должен содержать более 8 символов'})
+            }
+            if (!strongPassword.test(password)) {
+                return res.status(406).json({message: 'Пароль должен содержать 1 спецсимвол, 1 символ верхнего регистра, 1 число'})
+            }
+
+            user.username = username || user.username;
+            user.email = email || user.email;
+            if (password) {
+               user.password = await bcrypt.hashSync(password, 8)
+            }
+            const updateUser = await user.save();
+            const token = generateToken(user);
+            return res.json({...updateUser._doc, token});
+
+        }
+        catch (e) {
+
+        }
+    }
 }
 
 export default new UserCtrls();

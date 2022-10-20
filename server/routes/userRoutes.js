@@ -4,7 +4,7 @@ import expressAsyncHandler from 'express-async-handler';
 const userRouter = express.Router();
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken';
-import { generateToken } from "../utils.js";
+import {generateToken, isAuth} from "../utils.js";
 import userCtrls from "../controllres/userCtrls.js";
 
 
@@ -30,6 +30,7 @@ userRouter.post('/signin',
 
 userRouter.post ('/signup', userCtrls.registration);
 userRouter.get('/activate/:link', userCtrls.activate);
+userRouter.put ('/profile', isAuth, userCtrls.update)
 
 export default userRouter;
 
